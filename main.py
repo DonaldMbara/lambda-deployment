@@ -11,6 +11,6 @@ def home():
 def health_check():
     return jsonify({"status": "healthy"}), 200
 
-# This handler function is what AWS Lambda calls whenever an HTTP request arrives
+# This handler function is what AWS Lambda calls whenever an HTTP request arrives.
 def handler(event, context):
     return serverless_wsgi.handle_request(app, event, context)
