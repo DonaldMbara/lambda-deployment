@@ -6,11 +6,11 @@ Resources:
   FlaskLambdaFunction:
     Type: AWS::Serverless::Function
     Properties:
+      CodeUri: . # Add this exact line to point to your zip root contents
       Handler: main.handler
       Runtime: python3.11
       Timeout: 15
       MemorySize: 512
       Events:
         HttpApiEvent:
-          Type: HttpApi # Automatically attaches a high-speed HTTP API Gateway
-
+          Type: HttpApi
