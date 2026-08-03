@@ -1,0 +1,23 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.11
+  build:
+    commands:
+      - echo Running unit tests...
+      - pip install flask serverless-wsgi coverage
+      - PYTHONPATH=. python -m coverage run -m unittest discover -s . -p "test_*.py"
+      - echo Packaging Lambda application files...
+      # Install dependencies cleanly into the current directory root
+      - pip install flask serverless-wsgi -t .
+  post_build:
+    commands:
+      - echo Build complete. Packaging files for CodePipeline...
+
+artifacts:
+  files:
+    - main.py
+    - template.yml
+    - '**/*' # This grabs all the pip dependency folders we downloaded
