@@ -20,4 +20,4 @@ artifacts:
   files:
     - main.py
     - template.yml
-    - '**/*' # This grabs all the pip dependency folders we downloaded
+    - '**/*' # This grabs all the pip dependency folders we downloaded.
